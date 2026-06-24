@@ -24,17 +24,17 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: { hotspot: true },
-      validation: (Rule) => Rule.required(),
+      name: 'images',
+      title: 'Images',
+      type: 'array',
+      of: [{ type: 'image', options: { hotspot: true } }],
+      validation: (Rule) => Rule.required().min(1).max(3),
     }),
   ],
   preview: {
     select: {
       title: 'heading',
-      media: 'image',
+      media: 'images.0',
     },
   },
 })
