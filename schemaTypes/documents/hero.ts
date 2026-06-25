@@ -12,6 +12,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'hoverText',
+      title: 'Hover Text',
+      type: 'string',
+      description: 'Text revealed on hover behind the headline',
+    }),
+    defineField({
       name: 'tagline',
       title: 'Tagline',
       type: 'string',
@@ -31,10 +37,16 @@ export default defineType({
     }),
     defineField({
       name: 'backgroundMedia',
-      title: 'Background Media',
+      title: 'Background Media (Reference)',
       type: 'reference',
       to: [{ type: 'heroMedia' }],
-      validation: (Rule) => Rule.required(),
+      description: 'Upload video via Hero Media, then reference it here',
+    }),
+    defineField({
+      name: 'videoUrl',
+      title: 'Video URL (Alternative)',
+      type: 'url',
+      description: 'Or paste a direct video URL here (overrides reference)',
     }),
   ],
   preview: {
