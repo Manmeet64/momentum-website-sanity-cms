@@ -9,7 +9,7 @@ export default defineConfig({
   title: 'Momentum Web',
 
   projectId: 'dsr2azhe',
-  dataset: process.env.SANITY_STUDIO_DATASET || 'production',
+  dataset: process.env.SANITY_STUDIO_DATASET || 'development',
 
   plugins: [structureTool({structure}), visionTool()],
 
