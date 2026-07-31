@@ -9,6 +9,7 @@ import collabPage from './documents/collabPage'
 import siteSettings from './documents/siteSettings'
 import partner from './singletons/partner'
 import heroMedia from './singletons/heroMedia'
+import aboutPage from './documents/aboutPage'
 import aboutStep from './objects/aboutStep'
 
 export const schemaTypes = [
@@ -24,4 +25,5 @@ export const schemaTypes = [
   partner,
   heroMedia,
   aboutStep,
+  aboutPage,
 ]

@@ -13,6 +13,11 @@ export const structure: StructureToolOptions['structure'] = (S) =>
           S.document().schemaType('aboutSection').documentId('aboutSection'),
         ),
       S.listItem()
+        .title('About Page')
+        .child(
+          S.document().schemaType('aboutPage').documentId('aboutPage'),
+        ),
+      S.listItem()
         .title('Vault Section')
         .child(
           S.document().schemaType('vaultSection').documentId('vaultSection'),
