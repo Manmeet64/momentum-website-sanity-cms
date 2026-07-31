@@ -72,6 +72,12 @@ export default defineType({
               options: { hotspot: true },
               validation: (Rule) => Rule.required(),
             }),
+            defineField({
+              name: 'hoverPhoto',
+              title: 'Hover Photo',
+              type: 'image',
+              options: { hotspot: true },
+            }),
           ],
           preview: {
             select: { title: 'name', media: 'photo' },
