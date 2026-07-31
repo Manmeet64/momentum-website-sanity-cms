@@ -73,10 +73,36 @@ export default defineType({
               validation: (Rule) => Rule.required(),
             }),
             defineField({
+              name: 'photoPosition',
+              title: 'Photo Position',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Top', value: 'top' },
+                  { title: 'Center', value: 'center' },
+                ],
+                layout: 'radio',
+              },
+              initialValue: 'top',
+            }),
+            defineField({
               name: 'hoverPhoto',
               title: 'Hover Photo',
               type: 'image',
               options: { hotspot: true },
+            }),
+            defineField({
+              name: 'hoverPhotoPosition',
+              title: 'Hover Photo Position',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Top', value: 'top' },
+                  { title: 'Center', value: 'center' },
+                ],
+                layout: 'radio',
+              },
+              initialValue: 'top',
             }),
           ],
           preview: {
