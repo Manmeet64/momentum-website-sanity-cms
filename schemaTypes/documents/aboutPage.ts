@@ -30,6 +30,12 @@ export default defineType({
           of: [{ type: 'block' }],
           validation: (Rule) => Rule.required(),
         }),
+        defineField({
+          name: 'backgroundImage',
+          title: 'Background Image',
+          type: 'image',
+          options: { hotspot: true },
+        }),
       ],
       validation: (Rule) => Rule.required(),
     }),
