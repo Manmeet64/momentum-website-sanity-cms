@@ -40,6 +40,64 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'montage',
+      title: 'Montage video',
+      description:
+        'Landscape MP4 (H.264, ideally 1080p or lower, under ~60 MB). It streams from Sanity as you watch; viewers do not download it first. Leave empty to hide the section.',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'video',
+          title: 'Video file',
+          type: 'file',
+          options: { accept: 'video/mp4,video/webm' },
+        }),
+        defineField({
+          name: 'poster',
+          title: 'Poster image',
+          description: 'Shown until the video starts. Pick a frame that looks good on its own.',
+          type: 'image',
+          options: { hotspot: true },
+        }),
+        defineField({
+          name: 'caption',
+          title: 'Caption',
+          type: 'string',
+          validation: (Rule) => Rule.max(120),
+        }),
+      ],
+    }),
+    defineField({
+      name: 'sports',
+      title: 'Sports ticker',
+      description:
+        'The big scrolling words under the story. Split across two rows, so 8 or more looks best. Tick "Highlight" for anything that is ours (like Myrox).',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+              validation: (Rule) => Rule.required().max(24),
+            }),
+            defineField({
+              name: 'highlight',
+              title: 'Highlight',
+              type: 'boolean',
+              initialValue: false,
+            }),
+          ],
+          preview: {
+            select: { title: 'name', highlight: 'highlight' },
+            prepare: ({ title, highlight }) => ({ title, subtitle: highlight ? 'Highlighted' : '' }),
+          },
+        },
+      ],
+    }),
+    defineField({
       name: 'founders',
       title: 'Founders',
       type: 'array',
