@@ -11,6 +11,9 @@ import partner from './singletons/partner'
 import heroMedia from './singletons/heroMedia'
 import aboutPage from './documents/aboutPage'
 import aboutStep from './objects/aboutStep'
+import faqItem from './objects/faqItem'
+import faqSection from './documents/faqSection'
+import sessionSection from './documents/sessionSection'
 
 export const schemaTypes = [
   hero,
@@ -26,4 +29,7 @@ export const schemaTypes = [
   heroMedia,
   aboutStep,
   aboutPage,
+  faqItem,
+  faqSection,
+  sessionSection,
 ]
