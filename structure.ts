@@ -1,4 +1,5 @@
 import type {StructureBuilder, StructureToolOptions} from 'sanity/structure'
+import {FolderIcon, ListIcon, PageIcon} from './icons'
 
 // Types that exist exactly once (fixed document ID = type name, except the
 // per-page FAQs). Used by sanity.config.ts to hide "create" and delete.
@@ -21,17 +22,19 @@ const single = (
 ) =>
   S.listItem()
     .title(title)
+    .icon(PageIcon)
     .id(documentId)
     .child(S.document().schemaType(schemaType).documentId(documentId))
 
 const list = (S: StructureBuilder, title: string, schemaType: string) =>
-  S.documentTypeListItem(schemaType).title(title)
+  S.documentTypeListItem(schemaType).title(title).icon(ListIcon)
 
 // A folder is a pane that lists its content; titles say what it is and where
 // it appears on the website, since editors find content by page.
 const folder = (S: StructureBuilder, title: string, items: any[]) =>
   S.listItem()
     .title(title)
+    .icon(FolderIcon)
     .child(S.list().title(title).items(items))
 
 export const structure: StructureToolOptions['structure'] = (S) =>
