@@ -4,6 +4,8 @@ export default defineType({
   name: 'ctaSection',
   title: 'CTA Section',
   type: 'document',
+  description:
+    "The join banner shown at the bottom of every page, plus the 'next event' mode.",
   fields: [
     defineField({
       name: 'headline',

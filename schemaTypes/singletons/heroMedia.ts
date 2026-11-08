@@ -4,6 +4,8 @@ export default defineType({
   name: 'heroMedia',
   title: 'Hero Media',
   type: 'document',
+  description:
+    'A background video and poster. Pick one in the Top banner on the Home page.',
   fields: [
     defineField({
       name: 'title',

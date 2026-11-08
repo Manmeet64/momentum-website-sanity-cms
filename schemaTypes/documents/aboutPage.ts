@@ -5,9 +5,18 @@ export default defineType({
   name: 'aboutPage',
   title: 'About Page',
   type: 'document',
+  description:
+    'Everything on the About page (/about): intro, montage video, sports ticker and founders.',
+  groups: [
+    {name: 'intro', title: 'Intro'},
+    {name: 'montage', title: 'Video'},
+    {name: 'sports', title: 'Sports'},
+    {name: 'founders', title: 'Founders'},
+  ],
   fields: [
     defineField({
       name: 'hero',
+      group: 'intro',
       title: 'Hero',
       type: 'object',
       fields: [
@@ -35,6 +44,7 @@ export default defineType({
     }),
     defineField({
       name: 'montage',
+      group: 'montage',
       title: 'Montage video',
       description:
         'Landscape MP4 (H.264, ideally 1080p or lower, under ~60 MB). It streams from Sanity as you watch; viewers do not download it first. Leave empty to hide the section.',
@@ -63,6 +73,7 @@ export default defineType({
     }),
     defineField({
       name: 'sports',
+      group: 'sports',
       title: 'Sports ticker',
       description:
         'The big scrolling words under the story. Split across two rows, so 8 or more looks best. Tick "Highlight" for anything that is ours (like Myrox).',
@@ -93,6 +104,7 @@ export default defineType({
     }),
     defineField({
       name: 'founders',
+      group: 'founders',
       title: 'Founders',
       type: 'array',
       of: [

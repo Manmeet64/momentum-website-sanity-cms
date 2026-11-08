@@ -4,6 +4,8 @@ export default defineType({
   name: 'testimonial',
   title: 'Testimonial',
   type: 'document',
+  description:
+    'A member video and quote. Not shown on the website yet.',
   fields: [
     defineField({
       name: 'name',

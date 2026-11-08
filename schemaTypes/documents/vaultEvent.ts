@@ -14,6 +14,8 @@ export default defineType({
   name: 'vaultEvent',
   title: 'Event',
   type: 'document',
+  description:
+    'A Vault event. Upcoming events feed the next-event banner on every page; once a cover image is added after the event, it joins the Home carousel.',
   fields: [
     defineField({
       name: 'eventName',

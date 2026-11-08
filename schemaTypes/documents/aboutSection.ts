@@ -4,6 +4,8 @@ export default defineType({
   name: 'aboutSection',
   title: 'About Section',
   type: 'document',
+  description:
+    "The short 'about us' steps on the Home page, with a link through to the About page.",
   fields: [
     defineField({
       name: 'steps',

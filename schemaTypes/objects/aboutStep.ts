@@ -21,7 +21,7 @@ export default defineType({
       name: 'images',
       title: 'Images',
       type: 'array',
-      description: 'Optional, up to three real photos of members. Each one needs a short description.',
+      description: 'Optional, up to three real photos of members. A short description for each is welcome but not required.',
       of: [
         {
           type: 'image',
@@ -33,7 +33,7 @@ export default defineType({
               type: 'string',
               description:
                 'For screen readers and search, e.g. "Members laughing after a Sunday run in Kharghar"',
-              validation: (Rule) => Rule.required().max(160),
+              validation: (Rule) => Rule.max(160),
             }),
           ],
         },

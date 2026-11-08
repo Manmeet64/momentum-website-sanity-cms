@@ -4,6 +4,8 @@ export default defineType({
   name: 'siteSettings',
   title: 'Site Settings',
   type: 'document',
+  description:
+    'Site-wide contact details and navigation: WhatsApp, Instagram, email and menu links.',
   fields: [
     defineField({
       name: 'whatsappLink',

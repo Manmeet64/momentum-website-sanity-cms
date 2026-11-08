@@ -4,6 +4,8 @@ export default defineType({
   name: 'partner',
   title: 'Partner',
   type: 'document',
+  description:
+    'A partner logo shown in the logo strip on the Home page.',
   fields: [
     defineField({
       name: 'name',

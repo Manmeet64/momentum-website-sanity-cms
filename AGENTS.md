@@ -16,9 +16,9 @@ Use pnpm (9.15.9). No tests; verify by running the Studio and checking `tsc`/esl
 
 - `sanity.config.ts` — workspace config: `structureTool({structure})`, `visionTool()`, `schema.types = schemaTypes`. Dataset = `SANITY_STUDIO_DATASET` or `development`.
 - `sanity.cli.ts` — CLI/deploy config: project `dsr2azhe`, dataset `production`, hosted-Studio `appId`, `autoUpdates: true`.
-- `structure.ts` — custom desk structure. Singletons are pinned list items with a fixed `documentId` equal to the type name (`hero`, `aboutSection`, `aboutPage`, `vaultSection`, `ctaSection`, `collabPage`, `siteSettings`); `vaultEvent`, `partner`, `testimonial`, `member` are normal lists.
+- `structure.ts` — custom desk structure. Singletons are pinned list items with a fixed `documentId` equal to the type name (`hero`, `aboutSection`, `aboutPage`, `ctaSection`, `collabPage`, `siteSettings`); `vaultEvent`, `partner`, `testimonial`, `member` are normal lists.
 - `schemaTypes/index.ts` — the registry. **Every new schema must be imported and added to `schemaTypes` here**, and if it's a singleton, also added to `structure.ts`.
-  - `documents/` — hero, aboutSection, aboutPage, vaultSection, ctaSection, vaultEvent, testimonial, member, collabPage, siteSettings
+  - `documents/` — hero, aboutSection, aboutPage, ctaSection, vaultEvent, testimonial, member, collabPage, siteSettings
   - `singletons/` — partner, heroMedia (despite the folder name, `partner` is a multi-document list in the desk; folder placement is historical)
   - `objects/` — aboutStep (reusable object)
 - `.sanity/`, `dist/`, `*.tsbuildinfo` are generated and git-ignored; don't edit them.

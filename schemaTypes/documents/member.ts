@@ -4,6 +4,8 @@ export default defineType({
   name: 'member',
   title: 'Member',
   type: 'document',
+  description:
+    "A member's first name, sport and photo. Not shown on the website yet.",
   fields: [
     defineField({
       name: 'firstName',

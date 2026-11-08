@@ -1,60 +1,68 @@
-import {StructureToolOptions} from 'sanity/structure'
+import type {StructureBuilder, StructureToolOptions} from 'sanity/structure'
+
+// Types that exist exactly once (fixed document ID = type name, except the
+// per-page FAQs). Used by sanity.config.ts to hide "create" and delete.
+export const singletonTypes = [
+  'hero',
+  'aboutSection',
+  'aboutPage',
+  'ctaSection',
+  'collabPage',
+  'siteSettings',
+  'sessionSection',
+  'faqSection',
+]
+
+const single = (
+  S: StructureBuilder,
+  title: string,
+  schemaType: string,
+  documentId = schemaType,
+) =>
+  S.listItem()
+    .title(title)
+    .id(documentId)
+    .child(S.document().schemaType(schemaType).documentId(documentId))
+
+const list = (S: StructureBuilder, title: string, schemaType: string) =>
+  S.documentTypeListItem(schemaType).title(title)
+
+// A folder is a pane that lists its content; titles say what it is and where
+// it appears on the website, since editors find content by page.
+const folder = (S: StructureBuilder, title: string, items: any[]) =>
+  S.listItem()
+    .title(title)
+    .child(S.list().title(title).items(items))
 
 export const structure: StructureToolOptions['structure'] = (S) =>
   S.list()
     .title('Content')
     .items([
-      S.listItem()
-        .title('Hero')
-        .child(S.document().schemaType('hero').documentId('hero')),
-      S.listItem()
-        .title('About Section')
-        .child(
-          S.document().schemaType('aboutSection').documentId('aboutSection'),
-        ),
-      S.listItem()
-        .title('About Page')
-        .child(
-          S.document().schemaType('aboutPage').documentId('aboutPage'),
-        ),
-      S.listItem()
-        .title('About FAQ')
-        .child(S.document().schemaType('faqSection').documentId('aboutFaq')),
-      S.listItem()
-        .title('Vault Section')
-        .child(
-          S.document().schemaType('vaultSection').documentId('vaultSection'),
-        ),
-      S.listItem()
-        .title('CTA Section')
-        .child(
-          S.document().schemaType('ctaSection').documentId('ctaSection'),
-        ),
-      S.listItem()
-        .title('Session Section')
-        .child(
-          S.document().schemaType('sessionSection').documentId('sessionSection'),
-        ),
-      S.listItem()
-        .title('Landing FAQ')
-        .child(S.document().schemaType('faqSection').documentId('landingFaq')),
+      folder(S, 'Home page', [
+        single(S, 'Top banner', 'hero'),
+        single(S, 'About us steps', 'aboutSection'),
+        single(S, 'The session', 'sessionSection'),
+        single(S, 'FAQ', 'faqSection', 'landingFaq'),
+        S.divider(),
+        list(S, '→ Events (shared)', 'vaultEvent'),
+        list(S, '→ Partners (shared)', 'partner'),
+      ]),
+      folder(S, 'About page', [
+        single(S, 'About page content', 'aboutPage'),
+        single(S, 'FAQ', 'faqSection', 'aboutFaq'),
+      ]),
+      folder(S, 'Collab page', [
+        single(S, 'Collab page content', 'collabPage'),
+      ]),
       S.divider(),
-      S.documentTypeListItem('vaultEvent').title('Vault Events'),
+      folder(S, 'Shared content', [
+        list(S, 'Events', 'vaultEvent'),
+        list(S, 'Partners', 'partner'),
+        list(S, 'Testimonials', 'testimonial'),
+        list(S, 'Members', 'member'),
+        list(S, 'Hero videos', 'heroMedia'),
+        single(S, 'Join banner', 'ctaSection'),
+      ]),
       S.divider(),
-      S.documentTypeListItem('partner').title('Partners'),
-      S.documentTypeListItem('testimonial').title('Testimonials'),
-      S.documentTypeListItem('member').title('Members'),
-      S.divider(),
-      S.listItem()
-        .title('Collab Page')
-        .child(
-          S.document().schemaType('collabPage').documentId('collabPage'),
-        ),
-      S.listItem()
-        .title('Site Settings')
-        .child(
-          S.document()
-            .schemaType('siteSettings')
-            .documentId('siteSettings'),
-        ),
+      single(S, 'Site settings', 'siteSettings'),
     ])

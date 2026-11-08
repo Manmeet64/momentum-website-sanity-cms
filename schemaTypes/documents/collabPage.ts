@@ -4,6 +4,8 @@ export default defineType({
   name: 'collabPage',
   title: 'Collab Page',
   type: 'document',
+  description:
+    'Content for the Collab page (/collab): audience numbers and collaboration formats.',
   fields: [
     defineField({
       name: 'audienceStats',

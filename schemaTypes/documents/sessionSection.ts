@@ -4,9 +4,18 @@ export default defineType({
   name: 'sessionSection',
   title: 'Session Section',
   type: 'document',
+  description:
+    "The 'what a session is like' block on the Home page, ending with how to join.",
+  groups: [
+    {name: 'intro', title: 'Intro'},
+    {name: 'moments', title: 'What happens'},
+    {name: 'photos', title: 'Photos'},
+    {name: 'join', title: 'How to join'},
+  ],
   fields: [
     defineField({
       name: 'heading',
+      group: 'intro',
       title: 'Heading',
       type: 'string',
       description: 'Phrase it as the question people ask, e.g. "What happens at a Momentum session?"',
@@ -14,6 +23,7 @@ export default defineType({
     }),
     defineField({
       name: 'whoItsFor',
+      group: 'intro',
       title: 'Who it is for',
       type: 'text',
       rows: 2,
@@ -22,6 +32,7 @@ export default defineType({
     }),
     defineField({
       name: 'moments',
+      group: 'moments',
       title: 'What happens',
       type: 'array',
       description: 'Two to four short moments in order, e.g. arrive, move, hang out after.',
@@ -52,6 +63,7 @@ export default defineType({
     }),
     defineField({
       name: 'photos',
+      group: 'photos',
       title: 'Photos',
       type: 'array',
       description: 'Real photos of members at sessions. Two to four.',
@@ -74,6 +86,7 @@ export default defineType({
     }),
     defineField({
       name: 'rhythm',
+      group: 'intro',
       title: 'Where and when',
       type: 'text',
       rows: 3,
@@ -83,6 +96,7 @@ export default defineType({
     }),
     defineField({
       name: 'joinHeading',
+      group: 'join',
       title: 'How to join: heading',
       type: 'string',
       description: 'Phrase it as the question people ask, e.g. "How do I join?"',
@@ -90,6 +104,7 @@ export default defineType({
     }),
     defineField({
       name: 'joinSteps',
+      group: 'join',
       title: 'How to join: steps',
       type: 'array',
       description:

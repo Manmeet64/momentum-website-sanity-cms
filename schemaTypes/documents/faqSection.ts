@@ -6,6 +6,8 @@ export default defineType({
   name: 'faqSection',
   title: 'FAQ',
   type: 'document',
+  description:
+    'Questions and answers shown at the bottom of a page. One FAQ exists per page.',
   fields: [
     defineField({
       name: 'heading',
