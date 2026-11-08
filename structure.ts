@@ -18,6 +18,9 @@ export const structure: StructureToolOptions['structure'] = (S) =>
           S.document().schemaType('aboutPage').documentId('aboutPage'),
         ),
       S.listItem()
+        .title('About FAQ')
+        .child(S.document().schemaType('faqSection').documentId('aboutFaq')),
+      S.listItem()
         .title('Vault Section')
         .child(
           S.document().schemaType('vaultSection').documentId('vaultSection'),

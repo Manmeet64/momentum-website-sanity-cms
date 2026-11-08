@@ -12,12 +12,6 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({
-          name: 'eyebrow',
-          title: 'Eyebrow',
-          type: 'string',
-          validation: (Rule) => Rule.required().max(60),
-        }),
-        defineField({
           name: 'heading',
           title: 'Heading',
           type: 'string',
