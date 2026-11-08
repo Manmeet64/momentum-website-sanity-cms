@@ -27,6 +27,14 @@ export const structure: StructureToolOptions['structure'] = (S) =>
         .child(
           S.document().schemaType('ctaSection').documentId('ctaSection'),
         ),
+      S.listItem()
+        .title('Session Section')
+        .child(
+          S.document().schemaType('sessionSection').documentId('sessionSection'),
+        ),
+      S.listItem()
+        .title('Landing FAQ')
+        .child(S.document().schemaType('faqSection').documentId('landingFaq')),
       S.divider(),
       S.documentTypeListItem('vaultEvent').title('Vault Events'),
       S.divider(),
