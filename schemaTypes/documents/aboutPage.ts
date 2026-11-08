@@ -6,9 +6,10 @@ export default defineType({
   title: 'About Page',
   type: 'document',
   description:
-    'Everything on the About page (/about): intro, montage video, sports ticker and founders.',
+    'Everything on the About page (/about): intro, scrolling story, montage video, sports ticker and founders.',
   groups: [
     {name: 'intro', title: 'Intro'},
+    {name: 'story', title: 'Story'},
     {name: 'montage', title: 'Video'},
     {name: 'sports', title: 'Sports'},
     {name: 'founders', title: 'Founders'},
@@ -41,6 +42,38 @@ export default defineType({
         }),
       ],
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'story',
+      group: 'story',
+      title: 'Story',
+      type: 'array',
+      description:
+        'The scrolling story under the intro, shown one step at a time (01 / 04). Keep each step short. Leave empty to use the default story.',
+      of: [
+        {
+          type: 'object',
+          name: 'storyBeat',
+          title: 'Step',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+              validation: (Rule) => Rule.required().max(60),
+            }),
+            defineField({
+              name: 'text',
+              title: 'Text',
+              type: 'text',
+              rows: 3,
+              validation: (Rule) => Rule.required().max(300),
+            }),
+          ],
+          preview: {select: {title: 'title', subtitle: 'text'}},
+        },
+      ],
+      validation: (Rule) => Rule.max(5),
     }),
     defineField({
       name: 'montage',
